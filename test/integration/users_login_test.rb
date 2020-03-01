@@ -23,7 +23,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_template "users/show"
     assert_select "a[href=?]", login_path, count:0
     assert_select "a[href=?]", logout_path
-    # assert_select "a[href=?]". user_path(@user)
+    # assert_select "a[href=?]". users_path(@user)
   end
 
   test "login with valid infomation followed by logout" do
@@ -46,7 +46,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
 
   test "authenticated? shuld return false for a user with nil digest" do
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember, '')
   end
 
   test "login with remembbering" do
